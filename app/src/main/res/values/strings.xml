@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Secret Santa</string>
+    
+    <string name="family_size_text_instructions">Please enter the amount of members in your family.</string>
+    <string name="family_size_edit_text">Enter family size here.</string>
+    <string name="family_size_button">Submit Size</string>
+    
+    <string name="family_members_text_instructions">Please enter each family members name separated by a comma with a space ie
+        (David, Bill or David, David JR)</string>
+    
+    <string name="family_members_edit_text">Enter family names here</string>
+    <string name="family_members_button">Submit Names</string>
+    
+    
+</resources>
