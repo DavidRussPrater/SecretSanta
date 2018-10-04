@@ -1,5 +1,7 @@
 package com.example.prate.secretsanta;
 
+
+import android.provider.Contacts;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -21,7 +23,10 @@ import java.util.stream.Collectors;
 
 public class MainActivity extends AppCompatActivity {
 
-
+    /*
+    Create a method that takes the ArrayList of names and randomizes the gifters and giftees and adds
+    them as key value pairs in a Ha
+     */
     public static HashMap<String, String> createHashMap(ArrayList<String> names) {
 
         // Create random variable for generating a random int
@@ -63,24 +68,36 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+
     }
 
     /*
     Create a method to get the names of the participants and add them to an ArrayList
      */
-    public ArrayList<String> createArrayList() {
+    public ArrayList<Person> createArrayList() {
         // Find the family members edit text and assign it to familyMembersEditText
         EditText familyMembersEditText = findViewById(R.id.family_members_edit_text);
         // Get the names from the familyMembersEditText
         String familyMembersNames = familyMembersEditText.getText().toString();
         // Create an array of names then separate the string of names and add them to array
         String namesArray[] = familyMembersNames.split(", ");
-        // Convert the array of names to and ArrayList of names
-        ArrayList<String> names = new ArrayList<>(Arrays.asList(namesArray));
+        // Create a new ArrayList of person objects stored as people
+        ArrayList<Person> people = new ArrayList<>();
 
-        return names;
+        //
+        for (String name : namesArray){
+           people.add(new Person(name));
+
+        }
+
+        return people;
+
     }
 
+    /*
+    Create a method to convert the ArrayList to a string and update the secret santa TextView
+     */
 
     public void updateSecretSantaTextView(View view) {
 
@@ -94,21 +111,18 @@ public class MainActivity extends AppCompatActivity {
         String secretSantaText;
 
         //Create a new array list of strings to store the names from the secret santa EditText
-        ArrayList<String> names = createArrayList();
+        ArrayList<Person> people = createArrayList();
 
-        //Create a secret santa HashMap from the names ArrayList
-        HashMap<String, String> secretSantaHashMap = createHashMap(names);
-
+        SecretSantaMaker maker = new SecretSantaMaker(people);
 
         // Created a for loop to create the final string to be displayed int the secret santa TextView
-        for (Map.Entry<String, String> entry : secretSantaHashMap.entrySet()) {
+        for (Map.Entry<Person, Person> entry : maker.createSecretSantas().entrySet()) {
             // Get the key from the secret santa HashMap
-            String key = entry.getKey();
+            Person key = entry.getKey();
             // Get the value from the secret santa HashMap
-            String value = entry.getValue();
-
+            Person value = entry.getValue();
             // Used the string builder and append to create the final string to be displayed
-            secretSantaStringBuilder.append(key + " --> " + value + "\n");
+            secretSantaStringBuilder.append(key.name + " --> " + value.name + "\n");
 
         }
 
