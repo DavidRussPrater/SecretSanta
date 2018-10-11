@@ -1,11 +1,12 @@
 package com.example.prate.secretsanta;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
 
-public class Person {
+public class Person implements Serializable {
 
     String name;
 
@@ -14,7 +15,7 @@ public class Person {
     int yearsConstraint;
 
     // Create an array list to store previous secret Santas
-    ArrayList<String> previousSecretSantas = new ArrayList<>();
+    ArrayList<Person> previousSecretSantas = new ArrayList<>();
     //Create an array list to store excluded participants for a given person
     HashSet<Person> excludedPeople = new HashSet<>(Collections.singletonList(this));
 
@@ -30,7 +31,7 @@ public class Person {
     }
 
     // This method takes into account the years constraint and a participants secret santa
-    public void addSecretSanta(String secretSanta) {
+    public void addSecretSanta(Person secretSanta) {
         // Get the size of the previousSecretSantas array list and store it as an int representing
         // the number of previous secret santas
         int numberOfPreviousSantas = previousSecretSantas.size();
@@ -38,12 +39,15 @@ public class Person {
         // If the the number for previous secret Santas is equal to the years constraint remove that
         // person from previousSecretSantas ArrayList so they can be piced again
         if (numberOfPreviousSantas == yearsConstraint) {
+            Person removePerson = previousSecretSantas.get(numberOfPreviousSantas - 1);
             // Remove a previous secret santa if they have met the years cosntriant
-            previousSecretSantas.remove(numberOfPreviousSantas - 1);
+            previousSecretSantas.remove(removePerson);
+            excludedPeople.remove(removePerson);
         }
 
         // Add this years secret Santa to the first index of the previousSecretSantas array list
         previousSecretSantas.add(0, secretSanta);
+        excludedPeople.add(secretSanta);
     }
 }
 

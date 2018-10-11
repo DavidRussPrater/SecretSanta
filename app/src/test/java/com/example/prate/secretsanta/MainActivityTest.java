@@ -6,16 +6,11 @@ import static org.junit.Assert.*;
 
 public class MainActivityTest {
 
-    @Test
-    public void createHashMap() {
-
-    }
 
     @Test
-    public void createArrayList() {
-    }
+    public void checkThatFamiliesCantGiftEachOther() {
 
-    @Test
-    public void updateSecretSantaTextView() {
+
+
     }
 }

@@ -111,7 +111,8 @@ class SecretSantaMaker {
                 int subIndex = people.indexOf(excludedPerson);
                 //this corresponds to e.g. for matrix[0][0], the first person is excluded from the first person
                 // e.g. matrix[0][1] first person cant get the second person
-                matrix[index][subIndex] = 0;
+               matrix[index][subIndex] = 0;
+
             }
         }
 
@@ -136,6 +137,7 @@ class SecretSantaMaker {
             // The final result is a pair of peope "Gifters and Giftees" in the format where the
             // first name is the gifter and the second names is the giftee (Gifter --> Giftee)
             secretSantaMap.put(people.get(path[i]), people.get(path[nextI]));
+
         }
 
         // Return the secret santa HashMap
