@@ -94,24 +94,23 @@ class SecretSantaMaker {
         return path;
     }
 
+    // This method is used create a matrix that stores the excluded people for that person
     private int[][] createAdjacencyMatrix() {
         //Matrix size of number of people by number of people
         int matrix[][] = new int[people.size()][people.size()];
-
         //Set everyone as included as possible match to start.
         for (int row[] : matrix) {
             Arrays.fill(row, 1);
         }
 
-        //Iterate through each person
+        //Iterate through each person to create a matrix to store excluded people
         for (Person person : people) {
             int index = people.indexOf(person);
             for (Person excludedPerson : person.excludedPeople) {
-
                 int subIndex = people.indexOf(excludedPerson);
                 //this corresponds to e.g. for matrix[0][0], the first person is excluded from the first person
                 // e.g. matrix[0][1] first person cant get the second person
-               matrix[index][subIndex] = 0;
+                matrix[index][subIndex] = 0;
 
             }
         }
@@ -132,8 +131,9 @@ class SecretSantaMaker {
             // If this is the last iteration the next index points back to the first person that is
             // used, completes the loop otherwise its just the next index.
             int nextI = i == path.length - 1 ? 0 : i + 1;
-            // If index of path i is less than zero or the value at
-            if (path[i] < 0 || path[nextI] < 0) return secretSantaMap; //No solution if this happens
+            // If index of path i is less than zero or the value at index of nextI is less than zero
+            // there is no solution
+            if (path[i] < 0 || path[nextI] < 0) return secretSantaMap;
             // The final result is a pair of peope "Gifters and Giftees" in the format where the
             // first name is the gifter and the second names is the giftee (Gifter --> Giftee)
             secretSantaMap.put(people.get(path[i]), people.get(path[nextI]));
