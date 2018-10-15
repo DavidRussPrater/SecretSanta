@@ -12,6 +12,8 @@
     <string name="submit_button">Submit</string>
     <string name="reset_button">reset</string>
 
+    <!-- String for no names-->
+    <string name="no_names_added">You forgot to add names\nPlease click reset and add a list of names</string>
     <!-- String for no solution -->
     <string name="no_solution">No Solution</string>
 
@@ -19,8 +21,14 @@
 
     <!-- These strings are used to test that family members cant gift one another -->
 
+    <!-- Test for 2x2 -->
+
+
+    <!-- Test for 5x5 -->
     <string name="family_one">1, 1, 1, 1, 1</string>
     <string name="family_two">2, 2, 2, 2, 2</string>
+
+    <!-- Test for 3x3x3 -->
     <string name="family_three">3, 3, 3, 3, 3</string>
     <string name="family_four">4, 4, 4, 4, 4</string>
     <string name="family_five">5, 5, 5, 5, 5</string>
