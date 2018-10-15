@@ -57,7 +57,7 @@ class SecretSantaMaker {
                 path[pos] = i;
 
                 /* recur to construct rest of the path */
-                if (hamCycleUtil(graph, path, pos + 1))
+                if (hamCycleUtil(graph, path, pos + 1) == true)
                     return true;
 
                 /* If adding vertex v doesn't lead to a solution,
@@ -87,7 +87,7 @@ class SecretSantaMaker {
            started from any point of the cycle as the graph is
            undirected */
         path[0] = 0;
-        if (!hamCycleUtil(graph, path, 1)) {
+        if (hamCycleUtil(graph, path, 1) == false) {
             System.out.println("\nSolution does not exist");
         }
 
