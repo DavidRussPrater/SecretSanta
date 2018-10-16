@@ -134,7 +134,7 @@ class SecretSantaMaker {
             // If index of path i is less than zero or the value at index of nextI is less than zero
             // there is no solution
             if (path[i] < 0 || path[nextI] < 0) return secretSantaMap;
-            // The final result is a pair of peope "Gifters and Giftees" in the format where the
+            // The final result is a pair of people "Gifters and Giftees" in the format where the
             // first name is the gifter and the second names is the giftee (Gifter --> Giftee)
             secretSantaMap.put(people.get(path[i]), people.get(path[nextI]));
 

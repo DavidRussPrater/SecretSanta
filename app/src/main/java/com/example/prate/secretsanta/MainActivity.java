@@ -83,7 +83,6 @@ public class MainActivity extends AppCompatActivity {
     /* Create a method to display the proper solution for the set of names or if their is no solution
        set the secret santaText to "No solution" or if the user clicks submit*/
     public void createSecretSanta(View view) {
-
         // Increment the counter variable to one to allow the people list to be created
         counter++;
 
@@ -99,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
         // Find th TextView for the secret santa and assign it to the variable secretSantaTextView
         TextView secretSantaTextView = findViewById(R.id.secret_santa_text_view);
         //Create the variable to store the secret santa text
-        String secretSantaText;
+        String secretSantaText ;
 
         // If the familyList isn't empty continue with normal operation
         if (!familyList.isEmpty()) {

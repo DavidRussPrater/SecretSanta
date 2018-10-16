@@ -41,7 +41,7 @@ public class MainActivityFunctionalityTest {
         onView(withId(R.id.family_members_edit_text)).check(matches(withText("")));
     }
 
-    // This test checks that the secret santa text gives further instructions if no familes were added
+    // This test checks that the secret santa text gives further instructions if no families were added
     @Test
     public void testSubmitButton() {
         onView(withId(R.id.family_members_edit_text)).perform(ViewActions.closeSoftKeyboard(), click());
@@ -72,8 +72,8 @@ public class MainActivityFunctionalityTest {
         onView(withId(R.id.family_members_edit_text)).perform(typeText("2, 2, 2, 2, 2, 2"));
         onView(withId(R.id.add_family_button)).perform(click());
         onView(withId(R.id.submit_family_button)).perform(click());
-        onView(withId(R.id.family_members_edit_text)).check(matches(not(withText("1 --> 1"))));
-        onView(withId(R.id.family_members_edit_text)).check(matches(not(withText("2 --> 2"))));
+        onView(withId(R.id.family_members_edit_text)).check(matches(not(withText(containsString("1 --> 1")))));
+        onView(withId(R.id.family_members_edit_text)).check(matches(not(withText(containsString("2 --> 2")))));
     }
 
     // This text checks that no solution is printed if one family is larger
@@ -105,6 +105,20 @@ public class MainActivityFunctionalityTest {
         // Click twice because the first result is a valid solution
         onView(withId(R.id.submit_family_button)).perform(click(), click());
         onView(withId(R.id.secret_santa_text_view)).check(matches(withText(containsString("No Solution"))));
+    }
+
+    @Test
+    public void testFamiliesOf4x5x6(){
+        onView(withId(R.id.family_members_edit_text)).perform(ViewActions.closeSoftKeyboard(), click());
+        onView(withId(R.id.family_members_edit_text)).perform(typeText("Ronald, Daniel, Jonny, David"));
+        onView(withId(R.id.add_family_button)).perform(click());
+        onView(withId(R.id.family_members_edit_text)).perform(typeText("Kreloff, Kenzie, Brooks, Mike, Sean"));
+        onView(withId(R.id.add_family_button)).perform(click());
+        onView(withId(R.id.family_members_edit_text)).perform(typeText("Tyler, Kyle, Tre, Jarid, Ryan, Brad"));
+        onView(withId(R.id.add_family_button)).perform(click());
+        onView(withId(R.id.submit_family_button)).perform(click());
+        onView(withId(R.id.family_members_edit_text)).check(matches(not(withText("1 --> 1"))));
+        onView(withId(R.id.family_members_edit_text)).check(matches(not(withText("2 --> 2"))));
     }
 
 }

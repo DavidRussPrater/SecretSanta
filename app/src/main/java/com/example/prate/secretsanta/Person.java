@@ -36,10 +36,10 @@ public class Person implements Serializable {
         int numberOfPreviousSantas = previousSecretSantas.size();
 
         /* If the the number for previous secret Santas is equal to the years constraint remove that
-           person from previousSecretSantas ArrayList so they can be piced again*/
+           person from previousSecretSantas ArrayList so they can be picked again*/
         if (numberOfPreviousSantas == yearsConstraint) {
             Person removePerson = previousSecretSantas.get(numberOfPreviousSantas - 1);
-            // Remove a previous secret santa if they have met the years cosntriant
+            // Remove a previous secret santa if they have met the years constraint
             previousSecretSantas.remove(removePerson);
             excludedPeople.remove(removePerson);
         }

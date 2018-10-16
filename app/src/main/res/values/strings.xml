@@ -6,7 +6,8 @@
 
     <!-- Strings for instructions and edit text -->
 
-    <string name="family_members_text_instructions">Please enter each family members name separated by a comma with a space ie(David, Bill or David, David JR) Then click the add family button \n\nWhen your done adding families click the submit button.</string>
+    <string name="family_members_text_instructions">Please enter each family members name separated
+        by a comma with a space ie(David, Bill or David, David JR) Then click the add family button \n\nWhen your done adding families click the submit button.</string>
     <string name="family_members_edit_text">Enter family names here</string>
     <string name="edit_text_hint">Enter names here</string>
 
